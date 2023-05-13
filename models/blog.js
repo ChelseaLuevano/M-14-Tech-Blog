@@ -31,7 +31,7 @@ Blog.init(
     }
 );
 
-BlogComments.init(
+BlogComment.init(
     {
         id: {
             type: DataTypes.INTEGER,
@@ -73,5 +73,5 @@ BlogComments.init(
 
 module.exports = {
     Blog,
-    BlogComments 
+    BlogComment 
 }

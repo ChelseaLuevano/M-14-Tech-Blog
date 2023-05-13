@@ -1,17 +1,24 @@
 const User = require('./user');
-const Comment = require('./comment');
-const Blog = require('/.blog');
-const userComment = require('./userComment');
+const {Blog, BlogComment} = require('/.blog');
 
 // Users can post many comments
-User.belongsToMany(Comments, {
-    through: {
-        model: userComment,
-        unique: false
-    }, 
-    as: 'user_comments'
+User.hasMany(BlogComment, {
+    foreignKey: "userID",
+    onDelete: "CASCADE"
 })
 
+BlogComment.hasOne(User, {
+    foreignKey: "userID"
+})
+
+Blog.hasOne(User, {
+    foreignKey: "userID"
+})
+
+User.hasMany(Blog, {
+    foreignKey: "userID",
+    onDelete: "CASCADE"
+})
 
 
 
