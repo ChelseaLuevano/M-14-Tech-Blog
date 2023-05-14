@@ -49,7 +49,6 @@ User.init(
     freezeTableName: true,
     underscored: true,
     paranoid: true,
-    modelName: 'user',
   }    
 )
 

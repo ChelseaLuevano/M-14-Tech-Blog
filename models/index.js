@@ -1,14 +1,14 @@
-const User = require('./user');
-const {Blog, BlogComment} = require('/.blog');
+const User = require("./user");
+const {Blog, BlogComment} = require("./blog");
 
 // Users can post many comments
 User.hasMany(BlogComment, {
-    foreignKey: "userID",
+    foreignKey: "blogID",
     onDelete: "CASCADE"
 })
 
 BlogComment.hasOne(User, {
-    foreignKey: "userID"
+    foreignKey: "blogID"
 })
 
 Blog.hasOne(User, {
@@ -22,4 +22,4 @@ User.hasMany(Blog, {
 
 
 
-module.exports = { User, Comment, Blog, userComment };
+module.exports = { User, Blog, BlogComment};

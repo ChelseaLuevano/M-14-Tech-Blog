@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 
 
 class Blog extends Model {}
-class BlogComments extends Model {}
+class BlogComment extends Model {}
 
 Blog.init(
     {
@@ -22,8 +22,12 @@ Blog.init(
             allowNull: false,
         },
         userID: {
-            type: DataTypes.STRING,
+            type: DataTypes.INTEGER,
             allowNull: false,
+            references: {
+                model: "User",
+                key: "id"
+            }
         }
     },
     {
@@ -51,7 +55,7 @@ BlogComment.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "user",
+                model: "User",
                 key: "id"
             }
         },
@@ -59,7 +63,7 @@ BlogComment.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "blog",
+                model: "Blogs",
                 key: "id"
             }
         }
