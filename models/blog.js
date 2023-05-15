@@ -31,7 +31,8 @@ Blog.init(
         }
     },
     {
-    sequelize
+    sequelize,
+    freezeTableName: true,
     }
 );
 
@@ -50,6 +51,9 @@ BlogComment.init(
         contents: {
             type: DataTypes.TEXT,
             allowNull: false,
+            valdiate: {
+                len: [1],
+            }
         },
         userID: {
             type: DataTypes.INTEGER,
@@ -63,13 +67,14 @@ BlogComment.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
-                model: "Blogs",
+                model: "Blog",
                 key: "id"
             }
         }
     },
     {
-    sequelize
+    sequelize, 
+    freezeTableName: true,
     }
 );
 
